@@ -12,9 +12,7 @@ lastmod: 2023-02-14T21:48:13+12:00
 featured: false
 draft: false
 external_link: "https://avivajpeyi.github.io/nz_gravity_workshop/"
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+
 image:
   caption: ""
   focal_point: ""
