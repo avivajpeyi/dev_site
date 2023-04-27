@@ -1,13 +1,13 @@
 ---
 
-title: "Move It"
+title: "Hayday"
 summary: ""
 authors: []
-tags: ["game", "voice"]
+tags: ["game"]
 categories: []
 date: 2020-06-18T23:55:13+10:00
 
-external_link: "https://ldjam.com/events/ludum-dare/42/move-it"
+external_link: "https://avivajpeyi.itch.io/dot-blaster"
 
 image:
   caption: ""

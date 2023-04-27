@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Boogie Block"
-summary: "All my colours were stripped away!  Help me become fabulous again by rollin' me around the block."
+summary: ""
 authors: []
 tags: ["game"]
 categories: []

@@ -5,37 +5,15 @@ date: 2022-10-24
 type: landing
 
 sections:
-  - block: about.avatar
+  - block: about.biography
     id: about
     content:
       username: admin
-      text:
-  - block: experience
-    content:
-      title: Experience
-      date_format: Jan 2006
-      items:
-        - title: Research Fellow
-          company: The University of Auckland
-          company_url: ''
-          company_logo: ''
-          location: New Zealand
-          date_start: '2022-02-01'
-          date_end: ''
-          description: Research fellow working in LISA data analysis.
-        - title: PhD Student
-          company: Monash University
-          company_url: ''
-          company_logo: 
-          location: California
-          date_start: '2016-01-01'
-          date_end: '2020-12-31'
-          description: Did some stuff 
-      design:
-      columns: '2'
+      text: 
   - block: collection
+    id: publications
     content:
-      title: Recent Publications
+      title: Publications
       text: |-
         {{% callout note %}}
         Quickly discover relevant content by [filtering publications](./publication/).
@@ -48,46 +26,64 @@ sections:
       columns: '2'
       view: citation
   - block: portfolio
-    id: projects
+    headless: true  # This file represents a page section.
+    id: games
     content:
-      title: Projects
+      title: Games
+      text: |-
+        <span>I love participating in game jams and making games in my spare time. Here are some that I had fun working on.</span><br/><span>  <br/> </span>
       filters:
         folders:
-          - project
+          - games
       default_button_index: 0
       buttons:
         - name: All
           tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
-        - name: Other
-          tag: Demo
+        - name: Procedually Generated
+          tag: proc-gen
+        - name: Voice Controlled
+          tag: voice
+        - name: Machine Learning
+          tag: ML-Agent 
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
-      columns: '1'
-      view: showcase
+      columns: '2'
+      view: masonry
       # For Showcase view, flip alternate rows?
-      flip_alt_rows: false
+      flip_alt_rows: true
   - block: contact
     id: contact
     content:
       title: Contact
       subtitle:
       text: 
-      email: test@example.org
-      phone: 888 888 88 88
+      email: avi.vajpeyi@auckland.ac.nz
+      phone: +64 22 543 1418
       address:
-        street: 450 Serra Mall
-        city: Stanford
-        region: CA
-        postcode: '94305'
-        country: United States
-        country_code: US
+        street: Building 303, Rm 305
+        city: 38 Princes Street
+        region: Auckland
+        postcode: '1010'
+        country: New Zealand
+        country_code: ZN     
+      office_hours:
+        - 'Weekdays 8:30 to 4:30'
+      coordinates:
+        latitude: '-36.852387'
+        longitude: '174.768083'
       contact_links:
-        - icon: video
+        - icon: github
+          icon_pack: fab
+          name: Github
+          link: 'https://github.com/avivajpeyi'
+        - icon: gitlab
+          icon_pack: fab
+          name: Git-LIGO
+          link: 'https://git.ligo.org/avi.vajpeyi'
+        - icon: gamepad
           icon_pack: fas
-          name: Zoom Me
-          link: 'https://zoom.com'
+          name: Try my games
+          link: 'https://avivajpeyi.itch.io/'
       # Automatically link email and phone or display as text?
       autolink: true
     design:

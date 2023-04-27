@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Taxi Tank"
-summary: "The streets of India can be a chaotic place. Fearlessly navigate the streets of the city in your tank - but watch out for the enemies."
+summary: ""
 authors: []
 tags: ["game"]
 categories: []

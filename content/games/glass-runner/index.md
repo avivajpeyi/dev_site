@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Glass Runner"
-summary: "Help Glass Runner avoid being shattered by the moving blocks!"
+summary: ""
 authors: []
 tags: ["game","proc-gen"]
 categories: []

@@ -1,13 +1,13 @@
 ---
 
-title: "Move It"
+title: "Shatter Bot"
 summary: ""
 authors: []
-tags: ["game", "voice"]
+tags: ["game", "proc-gen"]
 categories: []
 date: 2020-06-18T23:55:13+10:00
 
-external_link: "https://ldjam.com/events/ludum-dare/42/move-it"
+external_link: "https://avivajpeyi.itch.io/shatter-bot"
 
 image:
   caption: ""

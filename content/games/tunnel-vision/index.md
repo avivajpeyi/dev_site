@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Tunnel Vision"
-summary: "Fly your aircraft through the procedurally generated tunnels."
+summary: ""
 authors: []
 tags: ["game", "proc-gen"]
 categories: []

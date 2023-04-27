@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Vitality"
-summary: "Sacrifice your health to gain the power you need to survive against the uprising of cuboid shapes!"
+summary: ""
 authors: []
 tags: ["game"]
 categories: []

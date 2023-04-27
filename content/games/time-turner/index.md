@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Time Turner"
-summary: "A turn-based driving evasion game."
+summary: ""
 authors: []
 tags: ["game"]
 categories: []

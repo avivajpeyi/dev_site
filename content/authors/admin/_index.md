@@ -1,12 +1,13 @@
 ---
-title: Avi Vajpeyi
-role: " Postdoctoral Research Fellow at the University of Auckland"
-avatar_filename: apex.png
+title: 
+first_name: Avi
+last_name: Vajpeyi
+role: Postdoctoral Research Fellow
+avatar_filename: avatar.png
 bio: My research uses Bayesian inference to study gravitational waves from
   merging black holes.
 interests:
   - Gravitational Wave Astrophysics
-  - Intermediate Mass Black Holes
   - Bayesian Inference
 social:
   - icon: envelope
@@ -29,10 +30,6 @@ social:
 organizations:
   - name: University of Auckland
     url: https://www.auckland.ac.nz/en.html
-  - name: LVK Collaboration
-    url: https://www.ligo.caltech.edu/
-  - name: OzGrav
-    url: https://www.ozgrav.org/
 education:
   courses:
     - course: PhD in Astrophysics
@@ -43,10 +40,12 @@ education:
       year: 2018
 superuser: true
 status:
-  icon: static/uploads/avi.png
+  icon: 
 last_name: Vajpeyi
 highlight_name: true
 first_name: Avi
 email: avi.vajpeyi@gmail.com
 ---
-I am a Postdoctoral research fellow at the University of Auckland where I am researching gravitational waves as a member of the LVK and LISA collaborations. My research focuses on utilising Bayesian inference to study gravitational waves from merging black holes.
+# Hi, I'm Avi! 
+
+I study black holes that smash into one another. More specifically, I use gravitational waves emitted from merging black holes to make inferences using Bayesian techniques. I am currently a postdoctoral research fellow at the University of Auckland, working with [Prof. Renate Meyer](https://profiles.auckland.ac.nz/renate-meyer). I am also a member of the [LIGO-Virgo-KAGRA Collaboration](https://www.ligo.caltech.edu/), and the [OzGrav](https://www.ozgrav.org/) Centre of Excellence.

@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Chain Game"
-summary: "Use your dead-eye to lock on and zoom into your targets."
+summary: ""
 authors: []
 tags: ["game"]
 categories: []

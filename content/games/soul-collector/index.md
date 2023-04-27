@@ -2,7 +2,7 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "Soul Collector"
-summary: "You, The PoPo, have one job: to 'collect' the souls of the cursed with the help of your car."
+summary: ""
 authors: []
 tags: ["game"]
 categories: []

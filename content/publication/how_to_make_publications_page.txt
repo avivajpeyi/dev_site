@@ -5,6 +5,6 @@ pip3 install -U academic
 
 Use the cd command to navigate to your website folder in the terminal. Then import your publications with:
 ```{bash}
-cd <path the pub dir>
+cd <root dir of website repo>
 academic import --bibtex <path_to_your/publications.bib> (in static/files)
 ```

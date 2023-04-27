@@ -1,13 +1,13 @@
 ---
 
-title: "Move It"
+title: "Calm your farm"
 summary: ""
 authors: []
-tags: ["game", "voice"]
+tags: ["game"]
 categories: []
 date: 2020-06-18T23:55:13+10:00
 
-external_link: "https://ldjam.com/events/ludum-dare/42/move-it"
+external_link: "https://itch.io/jam/gmtk-2020/rate/691763"
 
 image:
   caption: ""
