@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Avi Vajpeyi</title><link>https://avivajpeyi.github.io/posts/</link><atom:link href="https://avivajpeyi.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><image><url>https://avivajpeyi.github.io/media/icon_hu8bb3cd4a71e1097e37400a0f18d2a5e2_266862_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://avivajpeyi.github.io/posts/</link></image><item><title>Avi's Pbilby Setup Notes</title><link>https://avivajpeyi.github.io/posts/pbilby_setup_notes/</link><pubDate>Wed, 29 Jun 2022 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/pbilby_setup_notes/</guid><description>&lt;details class="toc-inpage d-print-none " open>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Avi Vajpeyi</title><link>https://avivajpeyi.github.io/dev_site/posts/</link><atom:link href="https://avivajpeyi.github.io/dev_site/posts/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><image><url>https://avivajpeyi.github.io/dev_site/media/icon_hu8bb3cd4a71e1097e37400a0f18d2a5e2_266862_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://avivajpeyi.github.io/dev_site/posts/</link></image><item><title>Avi's Pbilby Setup Notes</title><link>https://avivajpeyi.github.io/dev_site/posts/pbilby_setup_notes/</link><pubDate>Wed, 29 Jun 2022 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/pbilby_setup_notes/</guid><description>&lt;details class="toc-inpage d-print-none " open>
 &lt;summary class="font-weight-bold">Table of Contents&lt;/summary>
 &lt;nav id="TableOfContents">
 &lt;ul>
@@ -203,7 +203,7 @@ This means that you can submit a job with &lt;code>752&lt;/code> cores (if you r
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── submit
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── analysis_GW150914_0.sh
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── bash_full.sh
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Slurm Notes</title><link>https://avivajpeyi.github.io/posts/slurm-notes/</link><pubDate>Wed, 20 Oct 2021 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/slurm-notes/</guid><description>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Slurm Notes</title><link>https://avivajpeyi.github.io/dev_site/posts/slurm-notes/</link><pubDate>Wed, 20 Oct 2021 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/slurm-notes/</guid><description>
 &lt;details class="toc-inpage d-print-none " open>
 &lt;summary class="font-weight-bold">Table of Contents&lt;/summary>
 &lt;nav id="TableOfContents">
@@ -271,16 +271,16 @@ For example you may run the following:&lt;/p>
 &lt;figure id="figure-total-cpu-hours-ive-used-19-22">
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="Total CPU hours I&amp;#39;ve used (&amp;#39;19-&amp;#39;22) " srcset="
-/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_c147d4e7e7c22f7621c8f61662fb14ac.webp 400w,
-/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_ee678d6e41928e637360f61ad2b78744.webp 760w,
-/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-src="https://avivajpeyi.github.io/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_c147d4e7e7c22f7621c8f61662fb14ac.webp"
+/dev_site/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_c147d4e7e7c22f7621c8f61662fb14ac.webp 400w,
+/dev_site/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_ee678d6e41928e637360f61ad2b78744.webp 760w,
+/dev_site/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://avivajpeyi.github.io/dev_site/dev_site/posts/slurm-notes/cpuhrs_hue501005abdd0d309a25415d2822d82f1_63641_c147d4e7e7c22f7621c8f61662fb14ac.webp"
 width="760"
 height="760"
 loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 Total CPU hours I&amp;rsquo;ve used (&amp;lsquo;19-&amp;lsquo;22)
-&lt;/figcaption>&lt;/figure></description></item><item><title>Matched Filtering</title><link>https://avivajpeyi.github.io/posts/matched-filtering/</link><pubDate>Mon, 29 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/matched-filtering/</guid><description>&lt;details class="toc-inpage d-print-none " open>
+&lt;/figcaption>&lt;/figure></description></item><item><title>Matched Filtering</title><link>https://avivajpeyi.github.io/dev_site/posts/matched-filtering/</link><pubDate>Mon, 29 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/matched-filtering/</guid><description>&lt;details class="toc-inpage d-print-none " open>
 &lt;summary class="font-weight-bold">Table of Contents&lt;/summary>
 &lt;nav id="TableOfContents">
 &lt;ul>
@@ -320,10 +320,10 @@ matched filtering to find gravitational waves in LIGO data.&lt;/p>
 &lt;figure id="figure-an-example-template-bank-used-by-ligo-searches">
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="An example template bank used by LIGO searches." srcset="
-/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_9affbff9d680342e3d752ae1f2bb6f82.webp 400w,
-/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_577c7671f5268455877a745fb9999f0c.webp 760w,
-/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-src="https://avivajpeyi.github.io/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_9affbff9d680342e3d752ae1f2bb6f82.webp"
+/dev_site/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_9affbff9d680342e3d752ae1f2bb6f82.webp 400w,
+/dev_site/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_577c7671f5268455877a745fb9999f0c.webp 760w,
+/dev_site/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://avivajpeyi.github.io/dev_site/dev_site/posts/matched-filtering/example_bank_huf1562fd73a0e497989eef78c62a97bdb_306564_9affbff9d680342e3d752ae1f2bb6f82.webp"
 width="760"
 height="577"
 loading="lazy" data-zoomable />&lt;/div>
@@ -523,10 +523,10 @@ can be calculated:&lt;/p>
 &lt;figure id="figure-a-demonstrative-image-showing-what-happens-to-a-gaussian-pulse-signal-when-some-noise-is-added-to-it">
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="A demonstrative image showing what happens to a Gaussian Pulse signal when some noise is added to it." srcset="
-/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_91f8c4292ff20a3bf99f796255cf0cd6.webp 400w,
-/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_fbc9f28d04ae24fe89435bcf7448db97.webp 760w,
-/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-src="https://avivajpeyi.github.io/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_91f8c4292ff20a3bf99f796255cf0cd6.webp"
+/dev_site/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_91f8c4292ff20a3bf99f796255cf0cd6.webp 400w,
+/dev_site/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_fbc9f28d04ae24fe89435bcf7448db97.webp 760w,
+/dev_site/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://avivajpeyi.github.io/dev_site/dev_site/posts/matched-filtering/data_huc79dad2933094a5bf23c1ca19d9dd784_53716_91f8c4292ff20a3bf99f796255cf0cd6.webp"
 width="640"
 height="480"
 loading="lazy" data-zoomable />&lt;/div>
@@ -569,7 +569,7 @@ A demonstrative image showing what happens to a Gaussian Pulse signal when some 
 &lt;h3 id="code-for-demo">Code for demo&lt;/h3>
 &lt;p>The entire code for the demo can be found here:
 &lt;script type="application/javascript" src="https://gist.github.com/avivajpeyi/c5fbcdabc5a52b3fd039075f98fcd563.js">&lt;/script>
-&lt;/p></description></item><item><title>Understanding exoplanet transits</title><link>https://avivajpeyi.github.io/posts/understanding-exoplanet-transits/</link><pubDate>Mon, 29 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/understanding-exoplanet-transits/</guid><description>&lt;p>Here are some of my note written on &lt;a href="https://monashuni-my.sharepoint.com/personal/avi_vajpeyi_monash_edu/_layouts/15/Doc.aspx?sourcedoc=%7b53f5d67a-7a1b-42f2-a693-65ef9fb374fc%7d&amp;amp;action=view&amp;amp;wd=target%28Reading%20Notes.one%7Cfaaa413a-250a-6140-925a-e1e174ac0934%2FThe%20Search%20for%20Exoplanets%7C5e36e1fd-6e00-8f48-9a9f-edcd007a97d8%2F%29" target="_blank" rel="noopener">OneNote&lt;/a>:&lt;/p>
+&lt;/p></description></item><item><title>Understanding exoplanet transits</title><link>https://avivajpeyi.github.io/dev_site/posts/understanding-exoplanet-transits/</link><pubDate>Mon, 29 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/understanding-exoplanet-transits/</guid><description>&lt;p>Here are some of my note written on &lt;a href="https://monashuni-my.sharepoint.com/personal/avi_vajpeyi_monash_edu/_layouts/15/Doc.aspx?sourcedoc=%7b53f5d67a-7a1b-42f2-a693-65ef9fb374fc%7d&amp;amp;action=view&amp;amp;wd=target%28Reading%20Notes.one%7Cfaaa413a-250a-6140-925a-e1e174ac0934%2FThe%20Search%20for%20Exoplanets%7C5e36e1fd-6e00-8f48-9a9f-edcd007a97d8%2F%29" target="_blank" rel="noopener">OneNote&lt;/a>:&lt;/p>
 &lt;!DOCTYPE html>
 &lt;html>
 &lt;head>
@@ -580,20 +580,20 @@ A demonstrative image showing what happens to a Gaussian Pulse signal when some 
 &lt;iframe src="understanding_exoplanet_transits.pdf" width="100%" height="500px">
 &lt;/iframe>
 &lt;/body>
-&lt;/html></description></item><item><title>Colorblind Palette for Plotting</title><link>https://avivajpeyi.github.io/posts/colorblind-palette-for-plotting/</link><pubDate>Fri, 19 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/colorblind-palette-for-plotting/</guid><description>&lt;script type="application/javascript" src="https://gist.github.com/avivajpeyi/6cafec9c0ffa70b0bd72b7ee85e995d1.js">&lt;/script>
+&lt;/html></description></item><item><title>Colorblind Palette for Plotting</title><link>https://avivajpeyi.github.io/dev_site/posts/colorblind-palette-for-plotting/</link><pubDate>Fri, 19 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/colorblind-palette-for-plotting/</guid><description>&lt;script type="application/javascript" src="https://gist.github.com/avivajpeyi/6cafec9c0ffa70b0bd72b7ee85e995d1.js">&lt;/script>
 &lt;figure id="figure-20-colorblind-cols-note-the-colors-are-very-similar-after-10">
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img alt="20 colorblind cols. Note the colors are very similar after ~10." srcset="
-/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_293a95cf52bebe90db760f931d7d416f.webp 400w,
-/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_4e9706fa226f49bbf6ebfc13fd5f6b2a.webp 760w,
-/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-src="https://avivajpeyi.github.io/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_293a95cf52bebe90db760f931d7d416f.webp"
+/dev_site/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_293a95cf52bebe90db760f931d7d416f.webp 400w,
+/dev_site/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_4e9706fa226f49bbf6ebfc13fd5f6b2a.webp 760w,
+/dev_site/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://avivajpeyi.github.io/dev_site/dev_site/posts/colorblind-palette-for-plotting/example_colorblind_cols_huf7e7db2a8672f1d7016a6ba445fb678c_8259_293a95cf52bebe90db760f931d7d416f.webp"
 width="760"
 height="54"
 loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;figcaption>
 20 colorblind cols. Note the colors are very similar after ~10.
-&lt;/figcaption>&lt;/figure></description></item><item><title>Python Big-O Examples</title><link>https://avivajpeyi.github.io/posts/python-big-o-examples/</link><pubDate>Fri, 19 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/python-big-o-examples/</guid><description>&lt;h1 id="what-are-the-big-o-for-the-following">What are the Big-O for the following?&lt;/h1>
+&lt;/figcaption>&lt;/figure></description></item><item><title>Python Big-O Examples</title><link>https://avivajpeyi.github.io/dev_site/posts/python-big-o-examples/</link><pubDate>Fri, 19 Jun 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/python-big-o-examples/</guid><description>&lt;h1 id="what-are-the-big-o-for-the-following">What are the Big-O for the following?&lt;/h1>
 &lt;p>Some students in an Algorithms class I am teaching are having trouble with
 Big-O notation. Here are some practice problems:&lt;/p>
 &lt;h2 id="qs-1">Qs 1&lt;/h2>
@@ -684,12 +684,12 @@ O(n)
 &lt;div id="qs9" class="collapse">
 O(n^4)
 &lt;/div>
-&lt;/div></description></item><item><title>PhD Reports</title><link>https://avivajpeyi.github.io/posts/phd-reports/</link><pubDate>Fri, 10 Apr 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/phd-reports/</guid><description>&lt;p>For my PhD canditure I have to produce some reports documenting my progress:&lt;/p>
+&lt;/div></description></item><item><title>PhD Reports</title><link>https://avivajpeyi.github.io/dev_site/posts/phd-reports/</link><pubDate>Fri, 10 Apr 2020 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/phd-reports/</guid><description>&lt;p>For my PhD canditure I have to produce some reports documenting my progress:&lt;/p>
 &lt;ul>
 &lt;li>6 months: &lt;a href="https://avi.vajpeyi.docs.ligo.org/initial_review/" target="_blank" rel="noopener">Initial Project Review Report&lt;/a>&lt;/li>
 &lt;li>12 months: &lt;a href="https://avi.vajpeyi.docs.ligo.org/confirmation_review/" target="_blank" rel="noopener">Confirmation Report&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>Note: to view these documents you may have to click on &amp;ldquo;Advanced &amp;gt; Proceed&amp;rdquo;.&lt;/p></description></item><item><title>Installing LalSuite from Source</title><link>https://avivajpeyi.github.io/posts/installing-lalsuite-from-source/</link><pubDate>Thu, 19 Sep 2019 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/posts/installing-lalsuite-from-source/</guid><description>&lt;h2 id="steps">Steps&lt;/h2>
+&lt;p>Note: to view these documents you may have to click on &amp;ldquo;Advanced &amp;gt; Proceed&amp;rdquo;.&lt;/p></description></item><item><title>Installing LalSuite from Source</title><link>https://avivajpeyi.github.io/dev_site/posts/installing-lalsuite-from-source/</link><pubDate>Thu, 19 Sep 2019 00:20:45 +1000</pubDate><guid>https://avivajpeyi.github.io/dev_site/posts/installing-lalsuite-from-source/</guid><description>&lt;h2 id="steps">Steps&lt;/h2>
 &lt;h3 id="step-0-requirements">Step 0: Requirements&lt;/h3>
 &lt;p>Module loads/things you might need:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">module load git/2.18.0

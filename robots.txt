@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: https://avivajpeyi.github.io/sitemap.xml
+Sitemap: https://avivajpeyi.github.io/dev_site/sitemap.xml
