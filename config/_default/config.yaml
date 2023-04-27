@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: "Avi Vajpeyi" # Website name
-baseURL: 'https://avivajpeyi.github.io/dev_site' # Website URL
+baseURL: 'https://avivajpeyi.github.io' # Website URL
 
 ############################
 ## LANGUAGE
