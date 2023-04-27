@@ -43,10 +43,10 @@ education:
       year: 2021
 superuser: true
 status:
-  icon: ☕️
-last_name: Wu
+  icon: static/uploads/avi.png
+last_name: Vajpeyi
 highlight_name: true
-first_name: Alice
+first_name: Avi
 email: avi.vajpeyi@gmail.com
 ---
 I am a Postdoctoral research fellow at the University of Auckland where I am researching gravitational waves as a member of the LVK and LISA collaborations. My research focuses on utilising Bayesian inference to study gravitational waves from merging black holes.
