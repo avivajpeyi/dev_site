@@ -33,8 +33,9 @@ Today we will use [Hugo and Wowchemy](https://wowchemy.com/docs/getting-started/
 By the end of this workshop, you all should have a website but may need to spend more time customising it to your liking.
 
 {{% callout note %}}
-This will require some coding/usage of `git`. Here are some non-git alternatives:
+This will require some coding/usage of `git`. Here are some no coding/git alternatives:
 - https://sites.google.com/ (no coding necessary)
+- https://www.journoportfolio.com/
 - https://jsonresume.org/
 {{% /callout %}}
 
