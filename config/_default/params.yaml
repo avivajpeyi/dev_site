@@ -68,11 +68,11 @@ features:
   privacy_pack:
     enable: false
   repository:
-    url: 'https://github.com/avivajpeyi/my_site_devtools'
+    url: 'https://github.com/avivajpeyi/dev_site'
     content_dir: content
     branch: main
   avatar:
-    gravatar: false
+    gravatar: true
     shape: circle
   comment:
     provider: ''

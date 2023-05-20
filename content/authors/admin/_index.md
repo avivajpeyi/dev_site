@@ -3,7 +3,7 @@ title:
 first_name: Avi
 last_name: Vajpeyi
 role: Postdoctoral Research Fellow
-avatar_filename: avatar.png
+avatar_filename: 
 bio: My research uses Bayesian inference to study gravitational waves from
   merging black holes.
 interests:
