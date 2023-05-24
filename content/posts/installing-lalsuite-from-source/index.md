@@ -3,7 +3,7 @@
 
 title: "Installing LalSuite from Source"
 subtitle: ""
-summary: "Source installing LalSuite sucks. Here are instructions that have worked for me."
+summary: "Source installing LalSuite can be tough. Here are instructions that have worked for me."
 authors: []
 tags: []
 categories: []
@@ -76,6 +76,6 @@ Copy the waveform data files and place them into this the `waveform_data/` dir
 Where do we get the waveform datafiles from again?
 {{% /callout %}}
 
-## Test install with the following script
+## Test installation steps with the following script
 
 {{< gist avivajpeyi 030a544b097fcb4508055d73fa3fa895>}}

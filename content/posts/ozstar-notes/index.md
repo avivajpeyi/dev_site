@@ -1,9 +1,9 @@
 ---
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
-title: "Slurm Notes"
+title: "Ozstar Notes"
 subtitle: ""
-summary: "Some notes on using slurm for HPC."
+summary: "Some notes on using Ozstar."
 authors: []
 tags: []
 categories: []
@@ -35,9 +35,8 @@ projects: []
 
 ## Interactive Jobs
 
-If you want to test softwre that requires  GUI, MPI/Parallel/Multiple threads using interactive jobs may be useful.
+If you want to test software that requires  GUI, MPI/Parallel/Multiple threads using interactive jobs may be useful.
 Note that if you need a GUI -- you'll need to `ssh` with `-X`.
-
 
 Run the following to start an interactive job:
 ```bash
@@ -106,5 +105,128 @@ To plot the data you can use the following:
   
 {{< figure src="cpuhrs.png" title="Total CPU hours I've used ('19-'22) " lightbox="true" >}}
 
+## Downloading/Uploading data
+
+### Slurm job with data-download
+The nodes with the fastest net speeds are the `data-mover` nodes.
+The compute-nodes dont have internet connection, so any jobs that require data download sould be done as a pre-processing step on the `data-mover` nodes. 
+
+For example:
+```bash
+#!/bin/bash
+#
+#SBATCH --job-name={{jobname}}
+#SBATCH --output={{log_dir}}/download_%A_%a.log
+#SBATCH --ntasks=1
+#SBATCH --time={{time}}
+#SBATCH --mem={{mem}}
+#SBATCH --cpus-per-task={{cpu_per_task}}
+#SBATCH --partition=datamover
+#SBATCH --array=0-5
+
+module load {{module_loads}}
+source {{python_env}}
+
+ARRAY_ARGS=(0 1 2 3 4)
+
+srun download_dataset ${ARRAY_ARGS[$SLURM_ARRAY_TASK_ID]} 
+```
+
+### Rsync data from/to OzStar
 
 
+```bash
+rsync -avPxH --no-g --chmod=Dg+s <LOCAL_PATH> avajpeyi@data-mover01.hpc.swin.edu.au:/fred/<OZ_PROJ>
+```
+
+
+
+## Sequential jobs
+
+Say you want to trigger sequential jobs (like a DAG), you will need to use the JobID for this and `--dependnecy=afterany:<JOBID>`. For example: 
+
+
+```bash
+==> submit.sh <==
+#!/bin/bash
+
+
+ANALYSIS_FN=('slurm_analysis_0.sh' 'slurm_analysis_1.sh')
+POST_FN='slurm_post.sh'
+JOB_IDS=()
+
+for index in ${!ANALYSIS_FN[*]}; do
+  echo "Submitting ${ANALYSIS_FN[$index]}"
+  JOB_ID=$(sbatch --parsable ${ANALYSIS_FN[$index]})
+  JOB_IDS+=(JOB_ID)
+done
+
+
+IDS="${JOB_IDS[@]}"
+IDFORMATTED=${IDS// /:}
+
+
+echo "Submitting ${POST_FN}"
+echo "sbatch --dependnecy=afterany:${IDFORMATTED} ${POST_FN}"
+
+sbatch --dependency=afterany:$IDFORMATTED $POST_FN
+
+squeue -u $USER -o '%.4u %.20j %.10A %.4C %.10E %R'
+```
+
+{{< spoiler text="Click to view the submission scripts" >}}
+
+
+
+```bash
+==> slurm_analysis_0.sh <==
+#!/bin/bash
+#
+#SBATCH --job-name=analysis_0
+#SBATCH --output=out.log
+#
+#SBATCH --ntasks=1
+#SBATCH --time=0:01:00
+#SBATCH --mem=100MB
+#SBATCH --cpus-per-task=1
+
+module load git/2.18.0 gcc/9.2.0 openmpi/4.0.2 python/3.8.5
+echo "analysis 0"
+```
+
+```bash
+==> slurm_analysis_1.sh <==
+#!/bin/bash
+#
+#SBATCH --job-name=analysis_1
+#SBATCH --output=out.log
+#
+#SBATCH --ntasks=1
+#SBATCH --time=0:01:00
+#SBATCH --mem=100MB
+#SBATCH --cpus-per-task=1
+
+module load git/2.18.0 gcc/9.2.0 openmpi/4.0.2 python/3.8.5
+echo "analysis 1"
+```
+
+```bash
+==> slurm_post.sh <==
+#!/bin/bash
+#
+#SBATCH --job-name=post
+#SBATCH --output=out.log
+#
+#SBATCH --ntasks=1
+#SBATCH --time=0:01:00
+#SBATCH --mem=100MB
+#SBATCH --cpus-per-task=1
+
+module load git/2.18.0 gcc/9.2.0 openmpi/4.0.2 python/3.8.5
+echo "post"
+
+```
+
+
+
+{{< /spoiler >}}
