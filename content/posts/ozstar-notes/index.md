@@ -43,12 +43,12 @@ Run the following to start an interactive job:
 sinteractive --ntasks 1 --nodes 1 --time 00:30:00 --mem 2GB
 ```
 
-Once resources are allocated, you'll notice that you're on a different machine (allocated for your interactive session).
-
+Once resources are allocated, you'll be placed in an alternative machine (for your interactive session).
+You will need to re-load your modules. 
 
 ## Jupyter notebooks + Slurm
 
-Once are in an interactive job session you can open a `jupyter` notebook with the following steps:
+In an interactive job session you can open a `jupyter` notebook with the following steps:
 
 1. Source envs for you interactive session 
     For example you may run the following:
@@ -72,12 +72,12 @@ Once are in an interactive job session you can open a `jupyter` notebook with th
     - run the command echoed above
     - open the link to the jupyer notebook (printed in the previous window)
 
-4. Run `exit` when done!
+4. Run `exit` when done
 
-    Otherwise the job will keep running until it times out.
+    Otherwise the job will keep running, hogging resources, until it times out.
  
  
- For convenience I have added the following to my `OzStar .bash_profile`
+ For convenience, I have added the following to my `OzStar .bash_profile`
  ```bash
  # Interactive Jupter notebooks
  alias start_ijob="sinteractive --ntasks 2 --time 00:60:00 --mem 4GB"
@@ -91,11 +91,12 @@ Once are in an interactive job session you can open a `jupyter` notebook with th
  export -f start_jupyter
 ```                     
 
-Now I can start a interactive job by running `start_ijob` and start the jupter notebook with `start_jupyter`.
+This allows me to start an interactive job with `start_ijob` and start the jupter notebook with `start_jupyter`.
  
  
 ## Plot CPU hours used for jobs
-The folowing creates a file `jobstats.txt` that contains the CPU time (seconds) for each job run bw the start+end time specified.
+Academics should try to be cognizant of the energy impact of their jobs. 
+The following creates a file `jobstats.txt` that contains the CPU time (seconds) for each job run bw the start+end time specified.
 ```bash
 sacct -S 2021-01-01 -E 2021-10-06 -u avajpeyi -X -o "jobname%-40,cputimeraw" --parsable2 > jobstats.txt 
 ```
@@ -226,7 +227,6 @@ module load git/2.18.0 gcc/9.2.0 openmpi/4.0.2 python/3.8.5
 echo "post"
 
 ```
-
 
 
 {{< /spoiler >}}
