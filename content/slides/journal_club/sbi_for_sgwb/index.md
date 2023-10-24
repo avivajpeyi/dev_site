@@ -1,44 +1,222 @@
 ---
-title: SBI for SGWB
-summary: An overview of the SBI and discussion on https://arxiv.org/abs/2309.07954
+title: SBI for SGBW
+summary: An journal club presentation for SBI for SGWB (https://arxiv.org/pdf/2309.07954.pdf)
 authors: []
 tags: ['Journal Club']
 categories: []
-date: '2023-10-05'
+date: '20233-10-27'
 slides:
-  # Choose a theme from https://github.com/hakimel/reveal.js#theming
   theme: white
-  # Choose a code highlighting style (see Hugo docs on Chroma)
-  #   Light style: github-light. Dark style: dracula (default).
   highlight_style: github-light
 ---
 
-# SBI for SGWB
-Simulation based inference for stochastic GW analysis
+## SBI for SGWB
+
+_Simulation based infernce for Stochastic GW background Analysis_
+(Alvey et al, 2023)
+
 
 [arxiv](https://arxiv.org/pdf/2309.07954.pdf) | [swyft](https://github.com/undark-lab/swyft)
 
----
+NZ Gravity Journal Club
 
-## Table of Contents
-
-- Intro to SBI + TMNRE
-- LISA SGWB + SBI
-- Results
+Oct 26th, 2023
 
 ---
 
-## Intro to SBI + TMNRE
+## Summary
 
-- Next: `Right Arrow` or `Space`
-- Previous: `Left Arrow`
-- Start: `Home`
-- Finish: `End`
-- Overview: `Esc`
-- Speaker notes: `S`
-- Fullscreen: `F`
-- Zoom: `Alt + Click`
-- [PDF Export](https://revealjs.com/pdf-export/)
+1. Sim based inference
+2. Alvey et al's LISA SGWB model
+3. Results + future work
+4. Some other SBI applications in GW (if time)
+
+---
+
+{{% section %}} 
+
+## SBI Intro
+
+---
+### Traditional problem
+
+$$
+p(\theta|d) = \frac{\mathcal{L}(d|\theta)\pi(\theta)}{\color{red}{Z(d)}}= \frac{\mathcal{L}(d|\theta)\pi(\theta)}{\color{red}{\int_{\theta}\mathcal{L}(d|\theta)\pi(\theta) d\theta}}
+$$
+
+- _Monte Carlo_: e.g. Rejection sampling
+- _Markov-chain MC_: e.g. Metropolis-Hastings, NUTS
+- _Variational Inference_: surrogate $p(\theta|d)$
+
+ 
+{{< hl >}} What if we dont have $\mathcal{L}(d|\theta)$ ?{{< /hl >}}
+
+
+
+---
+### Simulation based inference:
+New term for:
+- Approximate Bayes Computation, 
+- Likelihood free inference,
+- Indirect inference,
+- Synthetic likelihood
+
+
+---
+
+### Algorithm
+
+{{< figure src="https://miro.medium.com/v2/1*oer83KfCCI1AnoqsRtYlRg.png" width="400" height="400" >}}
+
+Compare the 'simulated' data to the 'true' data
+
+{{< speaker_note >}}
+
+- Marginal inference -- SBI its possible to directly target specific parameters for inference, ignore other parameters while still dealing correctly with the ones we dont care about  
+- Amortized -- SBI once trained -- we can get answers of the posteriors very quickly
+
+{{< /speaker_note >}}
+
+--- 
+
+### Different SBI methods:
+
+- **Classical**: Rejection ABC ('97), MCMC-ABC ('03)
+- **Neural density**: 
+  - Neural posterior estimator
+  - Neural likelihood estimator
+  - Neural _ratio_ estimator (Lnl/evid)
+- **Types of NN:**
+  - Mixture density networks
+  - Normalising flows
+
+---
+
+### Goals for NN + SBI:
+
+- *Speed*: Training faster than MCMC
+- *Scalability*: Doesn't fall apart with high D
+- *Pre-existing research*: Leverage modern ML tools (flows, NNs ...)
+
+
+---
+
+
+### MCMC, VI, SBI 
+
+|                           | MCMC | VI  | SBI     |  
+|---------------------------|-----|-----|---------|
+| Explicit Likelihood       | ✅   | ✅   | ❌       |  
+| Requires gradients        | ✅   | (✅) | ❌       |  
+| Targeted inference        | ✅    | ✅   | ❌       |  
+| Amortized                 | ❌  | (✅) | ✅       |  
+| Specialised architechture | ❌  | ✅   | ✅       |  
+| Requires data summaries   | ❌  | ❌   | ✅       |  
+| Marginal inference        | ❌  | ❌   | ✅       |  
+        
+{{< speaker_note >}}
+Amortized posterior is one that is not focused on any particular observation
+{{< /speaker_note >}}   
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
+
+---
+
+{{% section %}} 
+
+## SBI Math 
+
+__Skipping this, can come back if folks interested__
+
+
+
+{{< speaker_note >}}
+Library: swyft
+Simulation efficient marginal posterior estimation
+
+Target: X
+- say there are lots of parameters $\theta$
+- Only parameter values that plausiablly generate X will contribut to marginaliation
+- NESTED RATIO ESTIMATION finds this region by iteratively cnstraining the initial prior based on 1D marginal posteriors from previous iterations 
+- this method approximates the likelihood-to-evidence ratio by zeroing in on the high-likelihood regions 
+- method inspired by nested sampling
+- After a few iteraintins -- some 1D marginals will be mre constrained than others 
+
+https://pbs.twimg.com/media/E65qN0dWEAAxXCW?format=png&name=900x900
+
+{{< /speaker_note >}}
+
+
+---
+
+### $D_{KL}$ "Loss" function for training
+
+$$D_{\rm KL}(\tilde{p}, p) = \int \tilde{p}(x) \log \frac{\tilde{p}(x)}{p(x)}\ dx$$
+
+$D_{KL}$ is _not_ symmetric
+- $D_{\rm KL}(\tilde{p}, p)$: Variational inference (LnL based)
+- $D_{\rm KL}(p, \tilde{p})$: NPE (Simulation based)
+
+**PROBLEM:** how do we avoid evaluating the $p(\theta|d)$?
+
+---
+
+### KL-Divergence and VI
+
+$$D_{\rm KL} [\tilde{p}, p] (\theta) \sim \mathbb{E}_{\theta\sim\tilde{p}(\theta|d)} \log \left[ \frac{\tilde{p}(\theta|d)}{\mathcal{L}(d|\theta)\pi(\theta)} \right] + C$$ 
+
+- **PROBLEM:** $p(\theta|d)$ is $$$
+- **SOLUTION:** 
+  - $p(\theta|d) \sim \mathcal{L}(d|\theta)\pi(\theta)$ 
+  - $0\leq D_{\rm KL} [\tilde{p}, p]\leq Z(d)$
+  - Train $\tilde{p}(\theta|d)$
+
+---
+
+### KL-Divergence and SBI
+
+$$D_{\rm KL}[p, \tilde{p}] (\theta, d) \sim -\mathbb{E}_{(\theta,d)\sim p(\theta,d)} \log \tilde{p}(\theta| d) + C $$ 
+
+- **PROBLEM:** $p(\theta|d)$ is $$$
+- **SOLUTION:**
+  - sample from $p_{\rm joint}(\theta, d) = \mathcal{L}(d|\theta)\pi(\theta)$
+  - Train $\tilde{p}(\theta|d)$
+  
+---
+
+### Marginal SBI vs VI
+
+**Variatinal inference**
+- variational posterior $\tilde{p}(\vec{\theta}|d)$ must conver _all_ params likelihoodd model condditioned on
+
+**SBI Marginal inference**
+- Can replace $\tilde{p}(\vec{\theta}|d)$ for $\tilde{p}(\theta_1|d)$ without need of doing integrals
+
+
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
+
+---
+
+
+{{< slide background-image="https://user-images.githubusercontent.com/15642823/277592172-be608f89-4e27-489f-b3ab-48011968790d.jpeg">}}
+
+## "Marginal" inference
+
+$${\color{red}p(\theta_{\rm Waldo}| \rm{image})} =$$ 
+$$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})}\ d\theta_A\ d\theta_B\ d\theta_{\rm Waldo} $$
+
+- VI: have to learn _whole_ $\color{blue}p(\vec{\theta}|d)$
+- SBI: can focus on specific params $\color{red}p(\theta_{\rm Waldo}|d)$
+
 
 ---
 
@@ -141,7 +319,7 @@ Press the `S` key to view the speaker notes!
 Customize the slide style and background
 
 ```markdown
-[//]: # ({{</* slide background-image="boards.webp" */>}})
+{{</* slide background-image="boards.webp" */>}}
 {{</* slide background-color="#0000FF" */>}}
 {{</* slide class="my-style" */>}}
 ```
@@ -164,8 +342,11 @@ Create `assets/css/reveal_custom.css` with:
 
 ---
 
-# Questions?
+## Questions?
 
 [Ask](https://discord.gg/z8wNYzb)
 
 [Documentation](https://wowchemy.com/docs/content/slides/)
+
+---
+
