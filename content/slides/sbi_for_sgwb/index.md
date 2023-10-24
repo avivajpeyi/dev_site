@@ -10,10 +10,6 @@ slides:
   highlight_style: github-light
 ---
 
-[//]: # (START SBI DROPDOWN)
-
-{{% section %}} 
-
 # SBI Intro
 
 ---
@@ -49,19 +45,6 @@ $$
 
 Compare the 'simulated' data to the 'true' data
 
----
-
-### MCMC + SBI Comparison
-
-|                         | MCMC | SBI |
-|-------------------------|-----|----|
-| Explicit Likelihood     | ✅   | ❌  |
-| Requires gradients      | ✅   | ❌   |
-| Targeted inference      | ✅   | ❌   |
-| Requires data summaries | ❌   | ✅  |
-| Marginal inference      | ❌   | ✅  |
-| Amortized               | ❌    | ✅  |
-
 {{< speaker_note >}}
 
 - Marginal inference -- SBI its possible to directly target specific parameters for inference, ignore other parameters while still dealing correctly with the ones we dont care about  
@@ -84,29 +67,53 @@ Compare the 'simulated' data to the 'true' data
 
 ---
 
-
-
 ### Goals for NN + SBI:
 
 - *Speed*: Training faster than MCMC
 - *Scalability*: Doesn't fall apart with high D
-- *Pre-existing research*: Leverage modern ML tools 
+- *Pre-existing research*: Leverage modern ML tools (flows, NNs ...)
 
 
 ---
 
-### END OF SECTION 
+
+### MCMC, VI, SBI 
+
+|                           | MCMC | VI  | SBI     |  
+|---------------------------|-----|-----|---------|
+| Explicit Likelihood       | ✅   | ✅   | ❌       |  
+| Requires gradients        | ✅   | (✅) | ❌       |  
+| Targeted inference        | ✅    | ✅   | ❌       |  
+| Amortized                 | ❌  | (✅) | ✅       |  
+| Specialised architechture | ❌  | ✅   | ✅       |  
+| Requires data summaries   | ❌  | ❌   | ✅       |  
+| Marginal inference        | ❌  | ❌   | ✅       |  
+        
+{{< speaker_note >}}
+Amortized posterior is one that is not focused on any particular observation
+{{< /speaker_note >}}   
 
 
-{{% /section %}}
+---
 
-[//]: # (END SBI DROPDOWN)
+{{< slide background-image="https://user-images.githubusercontent.com/15642823/277592172-be608f89-4e27-489f-b3ab-48011968790d.jpeg">}}
+
+## "Marginal" inference
+
+$${\color{red}p(\theta_{\rm Waldo}| \rm{image})} =$$ 
+$$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})}\ d\theta_A\ d\theta_B\ d\theta_{\rm Waldo} $$
+
+- VI: have to learn _whole_ $\color{blue}p(\vec{theta}|d)$
+- SBI: can focus on specific params $\color{red}p(\theta_{\rm Waldo}|d)$
+
 
 ---
 
 {{% section %}} 
 
-## SBI VS VI
+## SBI Math 
+
+__Skipping this, can come back if folks interested__
 
 
 
@@ -141,27 +148,39 @@ $D_{KL}$ is _not_ symmetric
 
 ---
 
-### Variational inference 
+### KL-Divergence and VI
 
-$$D_{\rm KL} [\tilde{p}, p] (\theta) \sim \mathbb{E}_{\theta\sim\tilde{p}(\theta|d_0)} \log \left[ \frac{\tilde{p}(\theta|d_0)}{\mathcal{L}(d_0|\theta)\pi(\theta)} \right] + C$$ 
+$$D_{\rm KL} [\tilde{p}, p] (\theta) \sim \mathbb{E}_{\theta\sim\tilde{p}(\theta|d)} \log \left[ \frac{\tilde{p}(\theta|d)}{\mathcal{L}(d|\theta)\pi(\theta)} \right] + C$$ 
 
 - **PROBLEM:** $p(\theta|d)$ is $$$
 - **SOLUTION:** 
-  - $p(\theta|d) \sim \mathcal{L}(d_0|\theta)\pi(\theta)$ 
-  - $0\leq D_{\rm KL} [\tilde{p}, p]\leq Z(d_0)$
-  - Train $\tilde{p}(\theta|d_0)$
+  - $p(\theta|d) \sim \mathcal{L}(d|\theta)\pi(\theta)$ 
+  - $0\leq D_{\rm KL} [\tilde{p}, p]\leq Z(d)$
+  - Train $\tilde{p}(\theta|d)$
 
 ---
 
-### SBI Dkl
+### KL-Divergence and SBI
 
 $$D_{\rm KL}[p, \tilde{p}] (\theta, d) \sim -\mathbb{E}_{(\theta,d)\sim p(\theta,d)} \log \tilde{p}(\theta| d) + C $$ 
 
 - **PROBLEM:** $p(\theta|d)$ is $$$
 - **SOLUTION:**
-  - sample from $p(\theta, d) = \mathcal{L}(d|\theta)\pi(\theta)$
+  - sample from $p_{\rm joint}(\theta, d) = \mathcal{L}(d|\theta)\pi(\theta)$
   - Train $\tilde{p}(\theta|d)$
   
+---
+
+### Marginal SBI vs VI
+
+**Variatinal inference**
+- variational posterior $\tilde{p}(\vec{\theta}|d)$ must conver _all_ params likelihoodd model condditioned on
+
+**SBI Marginal inference**
+- Can replace $\tilde{p}(\vec{\theta}|d)$ for $\tilde{p}(\theta_1|d)$ without need of doing integrals
+
+
+
 ---
 
 ### END OF SECTION
@@ -171,6 +190,7 @@ $$D_{\rm KL}[p, \tilde{p}] (\theta, d) \sim -\mathbb{E}_{(\theta,d)\sim p(\theta
 
 
 ---
+
 
 ## Code Highlighting
 
