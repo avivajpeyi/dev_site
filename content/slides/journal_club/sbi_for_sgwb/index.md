@@ -13,7 +13,7 @@ slides:
 ## SBI for SGWB
 
 _Simulation based infernce for Stochastic GW background Analysis_
-(Alvey et al, 2023)
+(Alvey+, 2023)
 
 
 [arxiv](https://arxiv.org/pdf/2309.07954.pdf) | [swyft](https://github.com/undark-lab/swyft) | [edit](https://github.com/avivajpeyi/dev_site/edit/main/content/slides/journal_club/sbi_for_sgwb/index.md)
@@ -26,10 +26,138 @@ Oct 26th, 2023
 
 ## Summary
 
-1. Sim based inference
-2. LISA "Global fit" + GW background
-3. Alvey et al's LISA SGWB model
+1. LISA "Global fit" + GW background
+2. Alvey+'s LISA SGWB model
+3. Sim based inference + TMNRE
 4. Results, Discussion + future work
+
+---
+
+{{% section %}}
+
+## LISA Data analysis
+
+---
+
+### The data
+
+![lisa_data]
+
+[lisa_data]:https://github.com/avivajpeyi/dev_site/assets/15642823/af1e82e7-f1bc-4306-856e-b11e245cadf3
+
+---
+
+### The "Global fit"
+
+Analyze all the data, simultaneously, block-by-block 
+
+{{< figure src="https://github.com/avivajpeyi/dev_site/assets/15642823/1577656f-3c97-43e9-bc4d-7da09c6686ce" width="1300" height="350">}}
+
+$<10^5$ parameters in the full problem
+
+---
+
+### SGWB estimation methods
+
+Some recent work in LISA SGWB estimation: 
+
+| Noise model    | Signal model   | Noise + Signal |
+|----------------|----------------|----------------|
+| [Karnesis+ '19] | [Baghi+ '23]   | [Boileau+ '20] |
+| [Caprini+ '19] | [Muratore+ '23] | [Olaf+ '23]    |
+| [Pieroni+ '20] |                | Aimen+ (WIP)   |
+
+A high precision reconstruction required to extract an SGWB signal
+
+[Karnesis+ '19]:https://arxiv.org/abs/1906.09027
+[Caprini+ '19]:https://arxiv.org/abs/1906.09244
+[Pieroni+ '20]:https://arxiv.org/abs/2004.01135
+[Baghi+ '23]:https://arxiv.org/abs/2302.12573
+[Muratore+ '23]:https://arxiv.org/abs/2308.01056
+[Boileau+ '20]:https://arxiv.org/abs/2011.05055
+[Olaf+ '23]:https://arxiv.org/abs/2303.15929
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+## Alvey+'s SBI approach
+
+---
+
+### Motivation for SBI 
+
+
+{{< speaker_note >}}
+- Current SGWB approaches use stochastic sampling methods (MCMC, Nested sampling)  
+- These are not _robust_ to foreground transient signals (e.g. massive BH mergers)s
+{{< /speaker_note >}}
+
+
+SBI for SGWB estimation motivations 
+1. the 'marginal inference' property
+2. likelihood 'free' inference
+3. more robust to foreground transient signals (e.g. massive BH mergers)
+
+---
+
+### Signal and noise model
+
+[Signal]:https://user-images.githubusercontent.com/15642823/277888868-c7ac02f7-a2f1-4e49-ada3-f72c0e2eb71f.png
+[Noise]: https://user-images.githubusercontent.com/15642823/277888887-50a16f75-854a-4098-b3d4-ca7a829a6324.png
+
+
+|           | 
+|:---------:|
+| ![Signal] | 
+| ![Noise]  |
+
+---
+
+### BASE Model consists of
+- Data:
+  - 2 paramter instrumental noise model (only amplitude -- shape of noise curve is fixed)
+  - SGWB model, either (a) or (b)
+  - data(t) = noise(t) + Sum_signals s_i(t)
+- Single TDI channel
+- 12 days of data (split into 100 segments, 1 segment ~ 2.9 hours)
+- Freq resolution 1/2.9Hours ~ 0.1 mHz
+
+Note: this is ~1% of the full LISA mission duration
+
+---
+
+### Model with transients:
+- Same as BASE mode
+- In each segement Inject 1 massive BH merger (priors below) if U[0,1] < p 
+
+```python
+    Mc = U(8e5, 9e5)
+    eta = U(0.16, 0.25)
+    chi1 = U(-1.0, 1.0)
+    chi2 = U(-1.0, 1.0)
+    dist_mpc = U(5e4, 1e5)
+    tc = 0.0
+    phic = 0.0
+
+```
+
+---
+
+### MLA training:
+"Several numerical settings should be chosen for the general structure of the algorithm as well as the network architechture"
+- 500K simulations (9:1 train:val split)
+- 50 epochs (512 batch size)
+- save model weights with the lowest validation loss
+
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
 
 ---
 
@@ -226,14 +354,6 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 
 ---
 
-### Goal
-
-- Leverage the marginal inference property of SBI
-- Compress the simulated data into a few summary statistics (similar to variational encoder)
-- 
-
----
-
 ### Active learning loop
 
 ![loop]
@@ -268,97 +388,13 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 
 {{% section %}}
 
-## LISA Data analysis
-
----
-
-### Global Fit
-
----
-
-### SGWB estimation methods
-
----
-
-### END OF SECTION
-
-{{% /section %}}
-
----
-
-{{% section %}}
-
-## Alvey et al's SGWB fit
-
----
-
-### Signal and noise model
-
-[Signal]:https://user-images.githubusercontent.com/15642823/277888868-c7ac02f7-a2f1-4e49-ada3-f72c0e2eb71f.png
-[Noise]: https://user-images.githubusercontent.com/15642823/277888887-50a16f75-854a-4098-b3d4-ca7a829a6324.png
-
-
-|           | 
-|:---------:|
-| ![Signal] | 
-| ![Noise]  |
-
----
-
-### BASE Model consists of
-- Data:
-  - 2 paramter instrumental noise model (only amplitude -- shape of noise curve is fixed)
-  - SGWB model, either (a) or (b)
-  - data(t) = noise(t) + Sum_signals s_i(t)
-- Single TDI channel
-- 12 days of data (split into 100 segments, 1 segment ~ 2.9 hours)
-- Freq resolution 1/2.9Hours ~ 0.1 mHz
-
-Note: this is ~1% of the full LISA mission duration
-
----
-
-### Model with transients:
-- Same as BASE mode
-- In each segement Inject 1 massive BH merger (priors below) if U[0,1] < p 
-
-```python
-    Mc = U(8e5, 9e5)
-    eta = U(0.16, 0.25)
-    chi1 = U(-1.0, 1.0)
-    chi2 = U(-1.0, 1.0)
-    dist_mpc = U(5e4, 1e5)
-    tc = 0.0
-    phic = 0.0
-
-```
-
----
-
-### MLA training:
-"Several numerical settings should be chosen for the general structure of the algorithm as well as the network architechture"
-- 500K simulations (9:1 train:val split)
-- 50 epochs (512 batch size)
-- save model weights with the lowest validation loss
-
-
----
-
-### END OF SECTION
-
-{{% /section %}}
-
----
-
-{{% section %}}
-
-## Alvey et al's Results + Discussion
+## Results + Discussion
 
 ---
 
 ### MCMC vs SBI fit
 
-![corner]
+{{< figure src="https://user-images.githubusercontent.com/15642823/277888874-1ab882f7-e3d1-47a9-a542-96101b8b92b5.png" width="500px">}}
 
 [corner]: https://user-images.githubusercontent.com/15642823/277888874-1ab882f7-e3d1-47a9-a542-96101b8b92b5.png
 
