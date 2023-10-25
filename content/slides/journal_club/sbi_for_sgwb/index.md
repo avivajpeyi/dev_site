@@ -312,9 +312,6 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 
 [trunc]: https://user-images.githubusercontent.com/15642823/277902380-7807ed9e-99ae-40c4-b242-b7e9328306ec.png
 
----
-
-### END OF SECTION
 
 {{% /section %}}
 
@@ -373,10 +370,6 @@ this is ~1% of the full LISA mission duration
 - save model weights with the lowest validation loss
 
 
----
-
-### END OF SECTION
-
 {{% /section %}}
 
 ---
@@ -403,13 +396,13 @@ this is ~1% of the full LISA mission duration
 - The good:
   - 'Implicit marginalisation' may enable focused study (without global fit)!
   - Fewer evaluations of the model needed!
-- The ~bad~ not so good:
+- The $\tiny{\rm bad}$ not so good:
   - Doest use LnL even when known (no gradients)
-  - Requires robust models for noise (slow! [look at this plot](https://avivajpeyi.github.io/lisa_notes/_images/runtime.png))
+  - Requires robust models for noise ([slow!](https://avivajpeyi.github.io/lisa_notes/_images/runtime.png))
   - Need to model _all_ signals in data generation?
   - MLA architecture...
 - The ugly:
-  - MCMC comparison for data with transients unfair?
+  - unfair MCMC comparison for data with transients
 
 ---
 
@@ -422,11 +415,6 @@ this is ~1% of the full LISA mission duration
 - Additional data channels
 - other "SBI" blocks for the global fit
 
-
-
----
-
-### END OF SECTION
 
 {{% /section %}}
 
