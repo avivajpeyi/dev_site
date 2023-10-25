@@ -49,7 +49,7 @@ Oct 26th, 2023
 
 ### The "Global fit"
 
-Analyze all the data, simultaneously, block-by-block 
+Analyze all the data, simultaneously, block-by-block
 
 {{< figure src="https://github.com/avivajpeyi/dev_site/assets/15642823/1577656f-3c97-43e9-bc4d-7da09c6686ce" width="1300" height="350">}}
 
@@ -59,7 +59,6 @@ $<10^5$ parameters in the full problem
 
 ### SGWB estimation methods
 
-Some recent work in LISA SGWB estimation: 
 
 | Noise model    | Signal model   | Noise + Signal |
 |----------------|----------------|----------------|
@@ -67,7 +66,7 @@ Some recent work in LISA SGWB estimation:
 | [Caprini+ '19] | [Muratore+ '23] | [Olaf+ '23]    |
 | [Pieroni+ '20] |                | Aimen+ (WIP)   |
 
-A high precision reconstruction required to extract an SGWB signal
+High precision reconstruction required to extract an SGWB signal
 
 [Karnesis+ '19]:https://arxiv.org/abs/1906.09027
 [Caprini+ '19]:https://arxiv.org/abs/1906.09244
@@ -81,89 +80,24 @@ A high precision reconstruction required to extract an SGWB signal
 
 ---
 
-{{% section %}}
-
-## Alvey+'s SBI approach
-
----
-
-### Motivation for SBI 
-
+## Alvey+'s SBI approach motivations
 
 {{< speaker_note >}}
 - Current SGWB approaches use stochastic sampling methods (MCMC, Nested sampling)  
-- These are not _robust_ to foreground transient signals (e.g. massive BH mergers)s
+- These are not _robust_ to foreground transient signals (e.g. massive BH mergers)
+- add more comlexities
 {{< /speaker_note >}}
 
 
-SBI for SGWB estimation motivations 
-1. the 'marginal inference' property
-2. likelihood 'free' inference
-3. more robust to foreground transient signals (e.g. massive BH mergers)
-
----
-
-### Signal and noise model
-
-[Signal]:https://user-images.githubusercontent.com/15642823/277888868-c7ac02f7-a2f1-4e49-ada3-f72c0e2eb71f.png
-[Noise]: https://user-images.githubusercontent.com/15642823/277888887-50a16f75-854a-4098-b3d4-ca7a829a6324.png
-
-
-|           | 
-|:---------:|
-| ![Signal] | 
-| ![Noise]  |
-
----
-
-### BASE Model consists of
-- Data:
-  - 2 paramter instrumental noise model (only amplitude -- shape of noise curve is fixed)
-  - SGWB model, either (a) or (b)
-  - data(t) = noise(t) + Sum_signals s_i(t)
-- Single TDI channel
-- 12 days of data (split into 100 segments, 1 segment ~ 2.9 hours)
-- Freq resolution 1/2.9Hours ~ 0.1 mHz
-
-Note: this is ~1% of the full LISA mission duration
-
----
-
-### Model with transients:
-- Same as BASE mode
-- In each segement Inject 1 massive BH merger (priors below) if U[0,1] < p 
-
-```python
-    Mc = U(8e5, 9e5)
-    eta = U(0.16, 0.25)
-    chi1 = U(-1.0, 1.0)
-    chi2 = U(-1.0, 1.0)
-    dist_mpc = U(5e4, 1e5)
-    tc = 0.0
-    phic = 0.0
-
-```
-
----
-
-### MLA training:
-"Several numerical settings should be chosen for the general structure of the algorithm as well as the network architechture"
-- 500K simulations (9:1 train:val split)
-- 50 epochs (512 batch size)
-- save model weights with the lowest validation loss
-
-
----
-
-### END OF SECTION
-
-{{% /section %}}
+1. 'Marginal inference' property
+2. Likelihood 'free' inference
+3. More robust to foreground transient signals (e.g. massive BH mergers)
 
 ---
 
 {{% section %}}
 
-## SBI Intro
+## SBI
 
 ---
 ### Traditional problem
@@ -176,7 +110,7 @@ $$
 - _Markov-chain MC_: e.g. Metropolis-Hastings, NUTS
 - _Variational Inference_: surrogate $p(\theta|d)$
 
- 
+
 {{< hl >}} What if we dont have $\mathcal{L}(d|\theta)$ ?{{< /hl >}}
 
 
@@ -184,7 +118,7 @@ $$
 ---
 ### Simulation based inference:
 New term for:
-- Approximate Bayes Computation, 
+- Approximate Bayes Computation,
 - Likelihood free inference,
 - Indirect inference,
 - Synthetic likelihood
@@ -205,12 +139,12 @@ Compare the 'simulated' data to the 'true' data
 
 {{< /speaker_note >}}
 
---- 
+---
 
 ### Different SBI methods:
 
 - **Classical**: Rejection ABC ('97), MCMC-ABC ('03)
-- **Neural density**: 
+- **Neural density**:
   - Neural posterior estimator
   - Neural likelihood estimator
   - Neural _ratio_ estimator (Lnl/evid)
@@ -230,7 +164,7 @@ Compare the 'simulated' data to the 'true' data
 ---
 
 
-### MCMC, VI, SBI 
+### MCMC, VI, SBI
 
 |                           | MCMC | VI  | SBI     |  
 |---------------------------|-----|-----|---------|
@@ -241,7 +175,7 @@ Compare the 'simulated' data to the 'true' data
 | Specialised architechture | ❌  | ✅   | ✅       |  
 | Requires data summaries   | ❌  | ❌   | ✅       |  
 | Marginal inference        | ❌  | ❌   | ✅       |  
-        
+
 {{< speaker_note >}}
 Amortized posterior is one that is not focused on any particular observation
 {{< /speaker_note >}}   
@@ -254,9 +188,9 @@ Amortized posterior is one that is not focused on any particular observation
 
 ---
 
-{{% section %}} 
+{{% section %}}
 
-## SBI Math 
+## SBI Math
 
 __Skipping this, can come back if folks interested__
 
@@ -269,10 +203,10 @@ Simulation efficient marginal posterior estimation
 Target: X
 - say there are lots of parameters $\theta$
 - Only parameter values that plausiablly generate X will contribut to marginaliation
-- NESTED RATIO ESTIMATION finds this region by iteratively cnstraining the initial prior based on 1D marginal posteriors from previous iterations 
-- this method approximates the likelihood-to-evidence ratio by zeroing in on the high-likelihood regions 
+- NESTED RATIO ESTIMATION finds this region by iteratively cnstraining the initial prior based on 1D marginal posteriors from previous iterations
+- this method approximates the likelihood-to-evidence ratio by zeroing in on the high-likelihood regions
 - method inspired by nested sampling
-- After a few iteraintins -- some 1D marginals will be mre constrained than others 
+- After a few iteraintins -- some 1D marginals will be mre constrained than others
 
 https://pbs.twimg.com/media/E65qN0dWEAAxXCW?format=png&name=900x900
 
@@ -295,11 +229,11 @@ $D_{KL}$ is _not_ symmetric
 
 ### KL-Divergence and VI
 
-$$D_{\rm KL} [\tilde{p}, p] (\theta) \sim \mathbb{E}_{\theta\sim\tilde{p}(\theta|d)} \log \left[ \frac{\tilde{p}(\theta|d)}{\mathcal{L}(d|\theta)\pi(\theta)} \right] + C$$ 
+$$D_{\rm KL} [\tilde{p}, p] (\theta) \sim \mathbb{E}_{\theta\sim\tilde{p}(\theta|d)} \log \left[ \frac{\tilde{p}(\theta|d)}{\mathcal{L}(d|\theta)\pi(\theta)} \right] + C$$
 
 - **PROBLEM:** $p(\theta|d)$ is $$$
-- **SOLUTION:** 
-  - $p(\theta|d) \sim \mathcal{L}(d|\theta)\pi(\theta)$ 
+- **SOLUTION:**
+  - $p(\theta|d) \sim \mathcal{L}(d|\theta)\pi(\theta)$
   - $0\leq D_{\rm KL} [\tilde{p}, p]\leq Z(d)$
   - Train $\tilde{p}(\theta|d)$
 
@@ -307,13 +241,13 @@ $$D_{\rm KL} [\tilde{p}, p] (\theta) \sim \mathbb{E}_{\theta\sim\tilde{p}(\theta
 
 ### KL-Divergence and SBI
 
-$$D_{\rm KL}[p, \tilde{p}] (\theta, d) \sim -\mathbb{E}_{(\theta,d)\sim p(\theta,d)} \log \tilde{p}(\theta| d) + C $$ 
+$$D_{\rm KL}[p, \tilde{p}] (\theta, d) \sim -\mathbb{E}_{(\theta,d)\sim p(\theta,d)} \log \tilde{p}(\theta| d) + C $$
 
 - **PROBLEM:** $p(\theta|d)$ is $$$
 - **SOLUTION:**
   - sample from $p_{\rm joint}(\theta, d) = \mathcal{L}(d|\theta)\pi(\theta)$
   - Train $\tilde{p}(\theta|d)$
-  
+
 ---
 
 ### Marginal SBI vs VI
@@ -339,7 +273,7 @@ $$D_{\rm KL}[p, \tilde{p}] (\theta, d) \sim -\mathbb{E}_{(\theta,d)\sim p(\theta
 
 ## "Marginal" inference
 
-$${\color{red}p(\theta_{\rm Waldo}| \rm{image})} =$$ 
+$${\color{red}p(\theta_{\rm Waldo}| \rm{image})} =$$
 $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})}\ d\theta_A\ d\theta_B\ d\theta_{\rm Waldo} $$
 
 - VI: have to learn _whole_ $\color{blue}p(\vec{\theta}|d)$
@@ -388,6 +322,68 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 
 {{% section %}}
 
+## Alvey+ Signal and noise model
+
+
+- Noise model (only amplitudes parameterised -- shape fixed):
+  - $\small S^{\rm N}(A, P, f) \sim A^2 s^{TM}(f) + P^2 s^{OMS}(f)$
+
+- Two signal models (one chosen):
+  - $\tiny {\rm Power Law}: \Omega(\alpha, \gamma, f) \sim 10^\alpha\ f^\gamma$
+  - $\tiny {\rm N-Power Laws}:\Omega(\vec{\alpha}, \vec{\gamma}, \vec{f}_{\rm range}, f) \sim \sum^N 10^\alpha_i\ f^\gamma_i\ \Theta[f_i^{\rm min}, f_i^{\rm max}]$
+
+
+---
+
+### BASE Model consists of
+- data(t) = noise(t) + $\sum^{\rm signals}$ s_i(t)
+- Single TDI channel
+- 12 days of data (split into 100 segments, 1 segment ~ 2.9 hours)
+- $\Delta f\sim0.1\ {\rm mHz}$
+
+
+
+{{< speaker_note >}}
+this is ~1% of the full LISA mission duration
+{{< /speaker_note >}}
+
+---
+
+### Model with transients:
+- Same as BASE mode
+- In each segement Inject 1 massive BH merger (priors below) if U[0,1] < p
+
+```python
+    Mc = U(8e5, 9e5)
+    eta = U(0.16, 0.25)
+    chi1 = U(-1.0, 1.0)
+    chi2 = U(-1.0, 1.0)
+    dist_mpc = U(5e4, 1e5)
+    tc = 0.0
+    phic = 0.0
+
+```
+
+---
+
+### MLA training:
+"Several numerical settings should be chosen for the general structure of the algorithm as well as the network architechture"
+- 500K simulations (9:1 train:val split)
+- 50 epochs (512 batch size)
+- save model weights with the lowest validation loss
+
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
+
+---
+
+
+{{% section %}}
+
 ## Results + Discussion
 
 ---
@@ -400,23 +396,33 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 
 ---
 
-### Future work
 
-- comples noise model
-- longer data duration
-- other "SBI" blocks for the global fit
+
+### Some thoughts
+
+- The good:
+  - 'Implicit marginalisation' may enable focused study (without global fit)!
+  - Fewer evaluations of the model needed!
+- The ~bad~ not so good:
+  - Doest use LnL even when known (no gradients)
+  - Requires robust models for noise (slow! [look at this plot](https://avivajpeyi.github.io/lisa_notes/_images/runtime.png))
+  - Need to model _all_ signals in data generation?
+  - MLA architecture...
+- The ugly:
+  - MCMC comparison for data with transients unfair?
 
 ---
 
-### SBI thoughts
 
 
-- Focused analysis and 'implicit marginalisation' is neat! 
-- Fewer evaluations of the model needed -- good in sitations where the model is expensive to evaluate
-- doest use gradient information for lnL... sometimes we know the Lnl 
-- How does SBI perform if all params are important?
-- What if the model for noise/SGWB is not the best?
-  - How would this work with a non-parametric model?
+### Future work
+
+- More complex noise model
+- Longer data duration
+- Additional data channels
+- other "SBI" blocks for the global fit
+
+
 
 ---
 
@@ -437,4 +443,3 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 - [More plots](https://github.com/avivajpeyi/dev_site/wiki/Materials-for-SBI-journal-club-presentation)
 
 ---
-
