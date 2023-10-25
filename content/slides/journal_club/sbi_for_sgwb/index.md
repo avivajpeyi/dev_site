@@ -16,7 +16,7 @@ _Simulation based infernce for Stochastic GW background Analysis_
 (Alvey et al, 2023)
 
 
-[arxiv](https://arxiv.org/pdf/2309.07954.pdf) | [swyft](https://github.com/undark-lab/swyft)
+[arxiv](https://arxiv.org/pdf/2309.07954.pdf) | [swyft](https://github.com/undark-lab/swyft) | [edit](https://github.com/avivajpeyi/dev_site/edit/main/content/slides/journal_club/sbi_for_sgwb/index.md)
 
 NZ Gravity Journal Club
 
@@ -27,13 +27,13 @@ Oct 26th, 2023
 ## Summary
 
 1. Sim based inference
-2. Alvey et al's LISA SGWB model
-3. Results + future work
-4. Some other SBI applications in GW (if time)
+2. LISA "Global fit" + GW background
+3. Alvey et al's LISA SGWB model
+4. Results, Discussion + future work
 
 ---
 
-{{% section %}} 
+{{% section %}}
 
 ## SBI Intro
 
@@ -220,133 +220,185 @@ $$\int {\color{blue}p(\theta_{A}, \theta_{B} ... \theta_{\rm Waldo}| \rm{image})
 
 ---
 
-## Code Highlighting
+{{% section %}}
 
-Inline code: `variable`
+## Truncated Marginal Neural Ratio Estimation (TMNRE)
 
-Code block:
+---
+
+### Goal
+
+- Leverage the marginal inference property of SBI
+- Compress the simulated data into a few summary statistics (similar to variational encoder)
+- 
+
+---
+
+### Active learning loop
+
+![loop]
+
+[loop]: https://user-images.githubusercontent.com/15642823/277889707-8e9f5955-b8ac-44e0-8067-808a5ad189d2.png
+
+
+---
+
+### Network architecture
+
+![network]
+
+[network]: https://user-images.githubusercontent.com/15642823/277868586-284becb9-8f47-4ed9-9a92-6a3e7683470d.png
+
+
+---
+
+### Truncation example
+
+![trunc]
+
+[trunc]: https://user-images.githubusercontent.com/15642823/277902380-7807ed9e-99ae-40c4-b242-b7e9328306ec.png
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+## LISA Data analysis
+
+---
+
+### Global Fit
+
+---
+
+### SGWB estimation methods
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+## Alvey et al's SGWB fit
+
+---
+
+### Signal and noise model
+
+[Signal]:https://user-images.githubusercontent.com/15642823/277888868-c7ac02f7-a2f1-4e49-ada3-f72c0e2eb71f.png
+[Noise]: https://user-images.githubusercontent.com/15642823/277888887-50a16f75-854a-4098-b3d4-ca7a829a6324.png
+
+
+|           | 
+|:---------:|
+| ![Signal] | 
+| ![Noise]  |
+
+---
+
+### BASE Model consists of
+- Data:
+  - 2 paramter instrumental noise model (only amplitude -- shape of noise curve is fixed)
+  - SGWB model, either (a) or (b)
+  - data(t) = noise(t) + Sum_signals s_i(t)
+- Single TDI channel
+- 12 days of data (split into 100 segments, 1 segment ~ 2.9 hours)
+- Freq resolution 1/2.9Hours ~ 0.1 mHz
+
+Note: this is ~1% of the full LISA mission duration
+
+---
+
+### Model with transients:
+- Same as BASE mode
+- In each segement Inject 1 massive BH merger (priors below) if U[0,1] < p 
 
 ```python
-porridge = "blueberry"
-if porridge == "blueberry":
-    print("Eating...")
-```
-
----
-
-## Math
-
-In-line math: $x + y = z$
-
-Block math:
-
-$$
-f\left( x \right) = \;\frac{{2\left( {x + 4} \right)\left( {x - 4} \right)}}{{\left( {x + 4} \right)\left( {x + 1} \right)}}
-$$
-
----
-
-## Fragments
-
-Make content appear incrementally
+    Mc = U(8e5, 9e5)
+    eta = U(0.16, 0.25)
+    chi1 = U(-1.0, 1.0)
+    chi2 = U(-1.0, 1.0)
+    dist_mpc = U(5e4, 1e5)
+    tc = 0.0
+    phic = 0.0
 
 ```
-{{</* fragment */>}} $\mathbf{y} =  $ {{</* /fragment */>}}
-{{</* fragment */>}} $X\boldsymbol\beta$ {{</* /fragment */>}}
-{{</* fragment */>}} $+ \boldsymbol\varepsilon$ {{</* /fragment */>}}
-```
-
-Press `Space` to play!
-
-{{< fragment >}} $\mathbf{y} =  $ {{< /fragment >}}
-{{< fragment >}} $X\boldsymbol\beta$ {{< /fragment >}}
-{{< fragment >}} $+ \boldsymbol\varepsilon$ {{< /fragment >}}
 
 ---
 
-A fragment can accept two optional parameters:
+### MLA training:
+"Several numerical settings should be chosen for the general structure of the algorithm as well as the network architechture"
+- 500K simulations (9:1 train:val split)
+- 50 epochs (512 batch size)
+- save model weights with the lowest validation loss
 
-- `class`: use a custom style (requires definition in custom CSS)
-- `weight`: sets the order in which a fragment appears
-
----
-
-## Speaker Notes
-
-Add speaker notes to your presentation
-
-```markdown
-{{%/* speaker_note */%}}
-
-- Only the speaker can read these notes
-- Press `S` key to view
-
-{{%/* /speaker_note */%}}
-```
-
-Press the `S` key to view the speaker notes!
-
-{{< speaker_note >}}
-
-- Only the speaker can read these notes
-- Press `S` key to view
-
-{{< /speaker_note >}}
 
 ---
 
-## Themes
+### END OF SECTION
 
-- black: Black background, white text, blue links (default)
-- white: White background, black text, blue links
-- league: Gray background, white text, blue links
-- beige: Beige background, dark text, brown links
-- sky: Blue background, thin dark text, blue links
+{{% /section %}}
 
 ---
 
-- night: Black background, thick white text, orange links
-- serif: Cappuccino background, gray text, brown links
-- simple: White background, black text, blue links
-- solarized: Cream-colored background, dark green text, blue links
+{{% section %}}
+
+## Alvey et al's Results + Discussion
 
 ---
 
-{{< slide background-image="boards.webp" >}}
+### MCMC vs SBI fit
 
-## Custom Slide
+![corner]
 
-Customize the slide style and background
-
-```markdown
-{{</* slide background-image="boards.webp" */>}}
-{{</* slide background-color="#0000FF" */>}}
-{{</* slide class="my-style" */>}}
-```
+[corner]: https://user-images.githubusercontent.com/15642823/277888874-1ab882f7-e3d1-47a9-a542-96101b8b92b5.png
 
 ---
 
-## Custom CSS Example
+### Future work
 
-Let's make headers navy colored.
-
-Create `assets/css/reveal_custom.css` with:
-
-```css
-.reveal section h1,
-.reveal section h2,
-.reveal section h3 {
-  color: navy;
-}
-```
+- comples noise model
+- longer data duration
+- other "SBI" blocks for the global fit
 
 ---
 
-## Questions?
+### SBI thoughts
 
-[Ask](https://discord.gg/z8wNYzb)
 
-[Documentation](https://wowchemy.com/docs/content/slides/)
+- Focused analysis and 'implicit marginalisation' is neat! 
+- Fewer evaluations of the model needed -- good in sitations where the model is expensive to evaluate
+- doest use gradient information for lnL... sometimes we know the Lnl 
+- How does SBI perform if all params are important?
+- What if the model for noise/SGWB is not the best?
+  - How would this work with a non-parametric model?
+
+---
+
+### END OF SECTION
+
+{{% /section %}}
+
+---
+
+## Other related papers
+
+
+- [Fast and credible likelihood-free cosmology with TMNRE](https://iopscience.iop.org/article/10.1088/1475-7516/2022/09/004/meta)
+- [Improved reconstruction of a stochastic gravitational wave background with LISA](https://arxiv.org/abs/2009.11845)
+- [Truncated Marginal Neural Ratio Estimation](https://arxiv.org/abs/2107.01214)
+- [Scalable inference with Autoregressive Neural Ratio Estimation](https://arxiv.org/abs/2308.08597)
+- [Fast Likelihood-free Reconstruction of Gravitational Wave Backgrounds](https://arxiv.org/pdf/2309.08430.pdf)
+- [More plots](https://github.com/avivajpeyi/dev_site/wiki/Materials-for-SBI-journal-club-presentation)
 
 ---
 
