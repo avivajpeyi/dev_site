@@ -1,0 +1,9 @@
+{{- $bg := .Get "background-image" | default "" -}}
+{{- $class := .Get "class" | default "" -}}
+{{- $style := "" -}}
+{{- if $bg -}}
+  {{- $style = printf "background-image:url('%s');" $bg -}}
+{{- end -}}
+<section class="reveal-slide {{$class}}" {{ if $style }}style="{{$style}}"{{ end }}>
+  {{ .Inner | markdownify }}
+</section>
